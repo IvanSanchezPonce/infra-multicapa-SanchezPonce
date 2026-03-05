@@ -1,1 +1,10 @@
+/YAML
 
+version: '3.8'
+services:
+  db:
+    image: mariadb:11
+    container_name: mariadb
+    restart: always
+    environment:
+    
