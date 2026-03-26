@@ -13,3 +13,19 @@ services:
       MYSQL_DATABASE: basedb
     ports: "3306:3306"
     
+  backend:
+    image: python:lastest
+    container_name: python
+    restart: always
+    environment:
+      PYTHON_DB_USER: usuario
+      PYTHON_DB_PASSWORD: usuario
+      PYTHON_DB_HOST: db:3306
+      PYTHON_DB_NAME: basedb
+    depend_on: db
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost/health | grep service_healthy || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
