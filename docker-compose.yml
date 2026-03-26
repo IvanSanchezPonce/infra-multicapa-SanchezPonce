@@ -7,4 +7,9 @@ services:
     container_name: mariadb
     restart: always
     environment:
+      MYSQL_USER: usuario
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_PASSWORD: usuario
+      MYSQL_DATABASE: basedb
+    ports: "3306:3306"
     
